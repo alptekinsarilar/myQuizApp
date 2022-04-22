@@ -13,20 +13,14 @@ class MyApp extends StatelessWidget {
         body: Column(
           children: [
             Text("The question"),
-            RaisedButton(
-              onPressed: null,
-              child: Text('Yukselen buton 1 zort'),
-              hoverColor: Color.fromARGB(174, 14, 242, 128),
-              color: Color.fromARGB(174, 14, 242, 128),
-              focusColor:  Color.fromARGB(174, 14, 242, 128),
+            Row(
+              children: [
+                Text('Zort yeni row'),
+              ],
             ),
-            RaisedButton(
+            ElevatedButton(
               onPressed: null,
-              child: Text('Yukselen buton 2 zort'),
-            ),
-            RaisedButton(
-              onPressed: null,
-              child: Text('Yukselen buton 3 zort'),
+              child: Text('Cazirtt'),
             ),
           ],
         ),
