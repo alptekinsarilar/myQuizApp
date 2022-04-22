@@ -3,42 +3,39 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  void action() {
-    print("hey dostum butona BAStin zort");
+  var questionIndex = 0;
+
+  void answerQuestion() {
+    questionIndex++;
+    print('Question $questionIndex has been answered by user.');
   }
 
   @override
   Widget build(BuildContext context) {
+    var questions = [
+      'Babam böyle pasta yapmayi nerden öğrendi?',
+      'Flutter\'da kaliteli bir developer olabilir miyim?',
+      'Zirlamadan önce derin bir nefes almali miyiz?'
+    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Başlik ZORT'),
+          title: Text('My QUIZ APP'),
         ),
         body: Column(
           children: [
-            Text("The question"),
-            Row(
-              children: [
-                Text('Zort yeni row'),
-              ],
+            Text(questions.elementAt(0)),
+            ElevatedButton(
+              onPressed: answerQuestion,
+              child: Text('A'),
             ),
             ElevatedButton(
-              onPressed: action,
-              child: Text('Cazirtt'),
+              onPressed: answerQuestion,
+              child: Text('B'),
             ),
             ElevatedButton(
-              onPressed: action,
-              child: Text('Cozurtt'),
-            ),
-            ElevatedButton(
-              child: Text('zart'),
-              onPressed: () {
-                print('zart is chosen');
-              },
-            ),
-            ElevatedButton(
-              child: Text('zuurrt'),
-              onPressed: () => print('zuurrt is chosen'),
+              onPressed: answerQuestion,
+              child: Text('C'),
             ),
           ],
         ),
