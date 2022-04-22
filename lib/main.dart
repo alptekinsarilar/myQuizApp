@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+
+  void action() {
+    print("hey dostum butona BAStin zort");
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,8 +24,12 @@ class MyApp extends StatelessWidget {
               ],
             ),
             ElevatedButton(
-              onPressed: null,
+              onPressed: action,
               child: Text('Cazirtt'),
+            ),
+            ElevatedButton(
+              onPressed: action,
+              child: Text('Cozurtt'),
             ),
           ],
         ),
