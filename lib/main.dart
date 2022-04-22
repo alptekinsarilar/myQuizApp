@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
   void action() {
     print("hey dostum butona BAStin zort");
   }
@@ -30,6 +29,16 @@ class MyApp extends StatelessWidget {
             ElevatedButton(
               onPressed: action,
               child: Text('Cozurtt'),
+            ),
+            ElevatedButton(
+              child: Text('zart'),
+              onPressed: () {
+                print('zart is chosen');
+              },
+            ),
+            ElevatedButton(
+              child: Text('zuurrt'),
+              onPressed: () => print('zuurrt is chosen'),
             ),
           ],
         ),
