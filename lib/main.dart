@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
+/* Whilst you can add (and also change) properties in a StatelessWidget, there's no way of telling Flutter that it should re-run build() upon such changes. */
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -11,8 +12,9 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   late List<String> questions;
   var questionIndex = 0;
-
+  
   void answerQuestion() {
+    /* setState() is a "trigger" that informs Flutter that it needs to re-run build() of the Widget. */
     setState(() {
       if(questionIndex < questions.length-1)
         questionIndex++;  
