@@ -2,17 +2,28 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return MyAppState();
+  }
+}
+class MyAppState extends State<MyApp> {
+  late List<String> questions;
   var questionIndex = 0;
 
   void answerQuestion() {
-    questionIndex++;
+    setState(() {
+      if(questionIndex < questions.length-1)
+        questionIndex++;  
+    });
+    
     print('Question $questionIndex has been answered by user.');
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
+    questions = [
       'Babam böyle pasta yapmayi nerden öğrendi?',
       'Flutter\'da kaliteli bir developer olabilir miyim?',
       'Zirlamadan önce derin bir nefes almali miyiz?'
@@ -24,7 +35,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text(questions.elementAt(0)),
+            Text(questions.elementAt(questionIndex)),
             ElevatedButton(
               onPressed: answerQuestion,
               child: Text('A'),
