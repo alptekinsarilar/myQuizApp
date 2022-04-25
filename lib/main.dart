@@ -17,9 +17,11 @@ class _MyAppState extends State<MyApp> {
   late List<String> questions;
   var _questionIndex = 0;
 
+  
   void answerQuestion() {
-    /* setState() is a "trigger" that informs Flutter that it needs to re-run build() of the Widget. */
-
+    //setState() is a "trigger" that informs Flutter that it needs to re-run build() of theWidget. 
+    //Since it does not have a parameter, we will callBack this function from the files which we need to access this as a VoidCallBack class which is in the material.dart package. If it would have a parameter then we should store it's pointer with a type Function.
+    
     setState(() {
       if (_questionIndex < questions.length - 1) _questionIndex++;
     });
