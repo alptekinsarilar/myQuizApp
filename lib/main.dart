@@ -15,19 +15,19 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final questions = const [
-      {
-        'questionText': 'Babam böyle pasta yapmayi nerden öğrendi?',
-        'answers': ['Internet\'ten', 'Pazar\'dan', 'Annem\'den']
-      },
-      {
-        'questionText': 'Flutter\'da kaliteli bir developer olabilir miyim?',
-        'answers': ['InşaAllah', 'Çalişirsan evet', 'Biraz ZORt', ':DD']
-      },
-      {
-        'questionText': 'Zirlamadan önce derin bir nefes almali miyiz?',
-        'answers': ['Hayir', 'EVET BABUŞ', 'Bilmem ki']
-      },
-    ];
+    {
+      'questionText': 'Babam böyle pasta yapmayi nerden öğrendi?',
+      'answers': ['Internet\'ten', 'Pazar\'dan', 'Annem\'den']
+    },
+    {
+      'questionText': 'Flutter\'da kaliteli bir developer olabilir miyim?',
+      'answers': ['InşaAllah', 'Çalişirsan evet', 'Biraz ZORt', ':DD']
+    },
+    {
+      'questionText': 'Zirlamadan önce derin bir nefes almali miyiz?',
+      'answers': ['Hayir', 'EVET BABUŞ', 'Bilmem ki']
+    },
+  ];
   var _questionIndex = 0;
 
   void answerQuestion() {
@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
     //Since it does not have a parameter, we will callBack this function from the files which we need to access this as a VoidCallBack class which is in the material.dart package. If it would have a parameter then we should store it's pointer with a type Function.
 
     setState(() {
-      if (_questionIndex < questions.length - 1) _questionIndex++;
+      _questionIndex++;
     });
 
     print('Question $_questionIndex has been answered by user.');
@@ -48,15 +48,22 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('My QUIZ APP'),
         ),
-        body: Column(
-          children: [
-            Question(questions[_questionIndex]['questionText'] as String),
-            ...(questions[_questionIndex]['answers'] as List<String>)
-                .map((answer) => Answer(answerQuestion, answer))
-                .toList()
-          ],
-        ),
-      ),
-    );
+        body: _questionIndex < questions.length
+            ? Column(
+                children: [
+                  Question(questions[_questionIndex]['questionText'] as String),
+                  ...(questions[_questionIndex]['answers'] as List<String>)
+                      .map((answer) => Answer(answerQuestion, answer))
+                      .toList()
+                ],
+              )
+            : Center(
+                child:Text(
+                  'Başardin gardaş!',
+                  style: TextStyle(fontSize: 28)
+                  ),
+                ),
+              ),
+      );
   }
 }
