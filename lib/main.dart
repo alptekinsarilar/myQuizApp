@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import './answer.dart';
 import './question.dart';
+import './quiz.dart';
+import './result.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final questions = const [
+  final _questions = const [
     {
       'questionText': 'Babam böyle pasta yapmayi nerden öğrendi?',
       'answers': ['Internet\'ten', 'Pazar\'dan', 'Annem\'den']
@@ -48,22 +50,14 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('My QUIZ APP'),
         ),
-        body: _questionIndex < questions.length
-            ? Column(
-                children: [
-                  Question(questions[_questionIndex]['questionText'] as String),
-                  ...(questions[_questionIndex]['answers'] as List<String>)
-                      .map((answer) => Answer(answerQuestion, answer))
-                      .toList()
-                ],
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                questions: _questions,
+                answerQuestion: answerQuestion,
+                questionIndex: _questionIndex,
               )
-            : Center(
-                child:Text(
-                  'Başardin gardaş!',
-                  style: TextStyle(fontSize: 28)
-                  ),
-                ),
-              ),
-      );
+            : Result(),
+      ),
+    );
   }
 }
