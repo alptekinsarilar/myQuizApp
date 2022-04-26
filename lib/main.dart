@@ -14,14 +14,26 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late List<String> questions;
+  final questions = const [
+      {
+        'questionText': 'Babam böyle pasta yapmayi nerden öğrendi?',
+        'answers': ['Internet\'ten', 'Pazar\'dan', 'Annem\'den']
+      },
+      {
+        'questionText': 'Flutter\'da kaliteli bir developer olabilir miyim?',
+        'answers': ['InşaAllah', 'Çalişirsan evet', 'Biraz ZORt', ':DD']
+      },
+      {
+        'questionText': 'Zirlamadan önce derin bir nefes almali miyiz?',
+        'answers': ['Hayir', 'EVET BABUŞ', 'Bilmem ki']
+      },
+    ];
   var _questionIndex = 0;
 
-  
   void answerQuestion() {
-    //setState() is a "trigger" that informs Flutter that it needs to re-run build() of theWidget. 
+    //setState() is a "trigger" that informs Flutter that it needs to re-run build() of theWidget.
     //Since it does not have a parameter, we will callBack this function from the files which we need to access this as a VoidCallBack class which is in the material.dart package. If it would have a parameter then we should store it's pointer with a type Function.
-    
+
     setState(() {
       if (_questionIndex < questions.length - 1) _questionIndex++;
     });
@@ -31,11 +43,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    questions = [
-      'Babam böyle pasta yapmayi nerden öğrendi?',
-      'Flutter\'da kaliteli bir developer olabilir miyim?',
-      'Zirlamadan önce derin bir nefes almali miyiz?'
-    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -43,10 +50,10 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Question(questions[_questionIndex]),
-            Answer(answerQuestion),
-            Answer(answerQuestion),
-            Answer(answerQuestion),
+            Question(questions[_questionIndex]['questionText'] as String),
+            ...(questions[_questionIndex]['answers'] as List<String>)
+                .map((answer) => Answer(answerQuestion, answer))
+                .toList()
           ],
         ),
       ),
