@@ -44,8 +44,9 @@ class _MyAppState extends State<MyApp> {
     },
   ];
   var _questionIndex = 0;
-  var _totalScore;
-  void answerQuestion(int score) {
+  var _totalScore = 0;
+
+  void _answerQuestion(int score) {
     //setState() is a "trigger" that informs Flutter that it needs to re-run build() of theWidget.
     //Since it does not have a parameter, we will callBack this function from the files which we need to access this as a VoidCallBack class which is in the material.dart package. If it would have a parameter then we should store it's pointer with a type Function.
     _totalScore += score;
@@ -67,7 +68,7 @@ class _MyAppState extends State<MyApp> {
         body: _questionIndex < _questions.length
             ? Quiz(
                 questions: _questions,
-                answerQuestion: answerQuestion,
+                answerQuestion: _answerQuestion,
                 questionIndex: _questionIndex,
               )
             : Result(),
