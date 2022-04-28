@@ -16,24 +16,40 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final _questions = const [
     {
-      'questionText': 'Babam böyle pasta yapmayi nerden öğrendi?',
-      'answers': ['Internet\'ten', 'Pazar\'dan', 'Annem\'den']
+      'questionText': 'What\'s your favorite color?',
+      'answers': [
+        {'text': 'Black', 'score': 1},
+        {'text': 'Red', 'score': 5},
+        {'text': 'Green', 'score': 8},
+        {'text': 'White', 'score': 10},
+      ],
     },
     {
-      'questionText': 'Flutter\'da kaliteli bir developer olabilir miyim?',
-      'answers': ['InşaAllah', 'Çalişirsan evet', 'Biraz ZORt', ':DD']
+      'questionText': 'What\'s your favorite animal?',
+      'answers': [
+        {'text': 'Rabbit', 'score': 12},
+        {'text': 'Snake', 'score': 1},
+        {'text': 'Elephant', 'score': 6},
+        {'text': 'Lion', 'score': 3},
+      ],
     },
     {
-      'questionText': 'Zirlamadan önce derin bir nefes almali miyiz?',
-      'answers': ['Hayir', 'EVET BABUŞ', 'Bilmem ki']
+      'questionText': 'Who\'s your favorite instructor?',
+      'answers': [
+        {'text': 'Max', 'score': 1},
+        {'text': 'Max', 'score': 1},
+        {'text': 'Max', 'score': 1},
+        {'text': 'Max', 'score': 1},
+      ],
     },
   ];
   var _questionIndex = 0;
-
-  void answerQuestion() {
+  var _totalScore;
+  void answerQuestion(int score) {
     //setState() is a "trigger" that informs Flutter that it needs to re-run build() of theWidget.
     //Since it does not have a parameter, we will callBack this function from the files which we need to access this as a VoidCallBack class which is in the material.dart package. If it would have a parameter then we should store it's pointer with a type Function.
-
+    _totalScore += score;
+    
     setState(() {
       _questionIndex++;
     });
